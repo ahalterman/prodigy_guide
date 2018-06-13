@@ -44,7 +44,11 @@ selection, etc.
 
 Prodigy includes the ability to add instructions to annotators. The
 instructions can be given either as plain text or HTML. The `prodigy.json`
-config file can be modified to include `"instructions": "/path/instructions"`,
-and the interface will then include an info icon that can pull them up. E.g.:
+config file can be modified to include `"instructions":
+"/path/instructions.html"`, and the interface will then include an info icon
+that can pull them up. The repo includes both plain text instructions and more
+elaborate HTML instructions with bullet points.
+
+E.g.:
 
 ![](instructions.png)

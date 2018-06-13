@@ -1,5 +1,5 @@
 {
     "theme": "basic",
     "batch_size": 10,
-    "instructions": "assault_instructions.txt",
+    "instructions": "assault_instructions.html",
 }
