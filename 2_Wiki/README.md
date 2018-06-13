@@ -4,7 +4,7 @@ This example shows how to take in a Wikipedia category page, generate
 Prodigy-formatted JSONL to display them as iframes, and run a simple
 classification display on them.
 
-### Formatting tasks 
+## Formatting tasks 
 
 Prodigy expects tasks to come in a certain format. Here, where we're displaying
 an external website as an iframe, we need to format it as a JSONL file (newline
@@ -19,13 +19,13 @@ python wiki_to_task.py -i https://en.wikipedia.org/wiki/Category:Towns_in_Oklaho
 where the link following `-i` is the Wikipedia category page to scrape, and the
 file following `-o` is the file to write it out to.
 
-### Running Prodigy
+## Running Prodigy
 
 Once our Wikipedia links are formatted in the correct JSONL format, we can
 start a Prodigy labeling session:
 
 ```
-prodigy mark ucsd_wiki wiki_tasks.jsonl --label "SUBURBAN"
+prodigy mark ucsd_wiki wiki_tasks.jsonl --label "SUBURBAN" --view-id classification
 ```
 
 where
@@ -37,5 +37,11 @@ classification model)
     time)
 - `wiki_tasks.jsonl`: the file of tasks to annotate that we created above
 - `--label "SUBURBAN"`: the label to use in annotating the examples
+- `--view-id classification`: use the classification-style interface (binary
+    accept/reject for the given label)
 
+## Example
 
+The task, once running, looks like this: 
+
+![](screenshot.png)

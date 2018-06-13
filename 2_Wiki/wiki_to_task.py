@@ -22,7 +22,7 @@ def cat_to_links(category_url):
     links = ['https://en.wikipedia.org' + i['href'] for i in links][1:]
     return links
 
-def results_to_task(links)
+def results_to_tasks(links):
     """
     Take in URLs and return Prodigy-formatted tasks with an iframe displaying the page.
 
@@ -38,17 +38,17 @@ def results_to_task(links)
     """
     tasks = []
     for l in links:
-        html = "<iframe width='960' height='415' src='{0}'></iframe>".format(l),
+        html = "<iframe width='560' height='415' src='{0}'></iframe>".format(l),
         task = {
             "html": html,
             "text": l
         }
         tasks.append(task)
-    return links
+    return tasks
 
 @plac.annotations(
-    cat_url("Wikipedia category URL", "option", "i", str),
-    output_file("File to write Prodigy JSONL to", "option", "o", str))
+    cat_url=("Wikipedia category URL", "option", "i", str),
+    output_file=("File to write Prodigy JSONL to", "option", "o", str))
 def main(cat_url, output_file):
     """
     Go from Wikipedia category page to Prodigy JSONL
