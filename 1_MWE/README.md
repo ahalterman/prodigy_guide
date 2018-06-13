@@ -39,3 +39,12 @@ re-annotation, saving time, frustration, and confusion.
 classification format, asking for binary decisions on a provided label, rather
 than a different interface such as manual highlighting, multiple choice, image
 selection, etc.
+
+## Instructions
+
+Prodigy includes the ability to add instructions to annotators. The
+instructions can be given either as plain text or HTML. The `prodigy.json`
+config file can be modified to include `"instructions": "/path/instructions"`,
+and the interface will then include an info icon that can pull them up. E.g.:
+
+![](instructions.png)
