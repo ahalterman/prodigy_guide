@@ -52,3 +52,9 @@ elaborate HTML instructions with bullet points.
 E.g.:
 
 ![](instructions.png)
+
+## Example
+
+Once running, the interface looks like: 
+
+![](screenshot.png)
