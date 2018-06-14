@@ -1,0 +1,5 @@
+{
+    "theme": "basic",
+    "batch_size": 10,
+    "custom_theme" : {"cardMaxWidth" : "950px"}
+}

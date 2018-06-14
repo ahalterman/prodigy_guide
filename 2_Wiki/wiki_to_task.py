@@ -38,7 +38,7 @@ def results_to_tasks(links):
     """
     tasks = []
     for l in links:
-        html = "<iframe width='560' height='415' src='{0}'></iframe>".format(l),
+        html = "<iframe width='900' height='415' src='{0}'></iframe>".format(l),
         task = {
             "html": html,
             "text": l
