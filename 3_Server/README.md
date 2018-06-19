@@ -12,11 +12,30 @@ home directory (`~/.prodigy/`) or on a per-project basis in the directory where
 Prodigy is started (the leading `.` is optional). By default, Prodigy only accepts requests coming from
 `localhost` to prevent outside access. To have Prodigy accept requests from
 outside, the Prodigy config needs to have `"host": "localhost"` changed to
-`"host": 0.0.0.0"` (see included `.prodigy.json`).:w
+`"host": 0.0.0.0"` (see included `.prodigy.json`).
+
 
 ### Opening ports on EC2
 
-(screenshot here)
+When creating an EC2 instance, you'll need configure its security group to
+allow traffic to the port that Prodigy is running on (by default, this is 8080):
+
+![](EC2_ports.png)
 
 ### Basic authentication
+
+Opening the port opens it to all the world. To prevent anyone from accessing
+Prodigy, you need configure basic HTTP authentication (or something fancier).
+Instructions for enabling authentication are here:
+https://support.prodi.gy/t/super-basic-authentication/233
+
+### Other EC2 setup
+
+The standard steps for setting up EC2 also need to be followed. Specifically, a
+new SSH key needs to be created unless there's an existing EC2 key. (See
+screenshot). After downloading the `.pem` key, the permissions need to be
+changed: `chmod 400 my_ec2_key.pem`. Then make sure you include the key when
+sshing in: `ssh -i /path/to/my_ec2_key.pem ubuntu@31.411....`.
+
+![Making an EC2 key](ssh.png)
 
