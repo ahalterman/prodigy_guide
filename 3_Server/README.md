@@ -25,9 +25,25 @@ allow traffic to the port that Prodigy is running on (by default, this is 8080):
 ### Basic authentication
 
 Opening the port opens it to all the world. To prevent anyone from accessing
-Prodigy, you need configure basic HTTP authentication (or something fancier).
-Instructions for enabling authentication are here:
-https://support.prodi.gy/t/super-basic-authentication/233
+Prodigy, you need configure some form of authentication. Simple HTTP
+authentication requires a password to access a page, but importantly, it does
+not encrypt your traffic end-to-end, so beware of having your credientials
+sniffed.
+
+To enable basic HTTP authentication, you need to change a line in the Prodigy
+source code.
+
+1. Figure out where Prodigy is installed by running the following in the
+   terminal: `python -c 'import prodigy; print(prodigy.__file__)`. This should
+   look something like `/Users/ahalterman/anaconda3/lib/python3.6/site-packages/prodigy/__init__.py`.
+2. Open the `app.py` file that's in the `prodigy/` directory you just located.
+3. Add the following line anywhere in the file to set the username and password
+   (changing them to be the ones you want to use):
+    `authentication = hug.authentication.basic(hug.authentication.verify('annotator1', 'mypassword'))`
+4. Above the `serve_static()` function, change `@hug.static('/')` to `@hug.static('/', requires = authentication)`
+   to enable authentication (see screenshot).
+
+![](authentication.png)
 
 ### Other EC2 setup
 
@@ -39,3 +55,22 @@ sshing in: `ssh -i /path/to/my_ec2_key.pem ubuntu@31.411....`.
 
 ![Making an EC2 key](ssh.png)
 
+You may also wish to ensure that Anaconda is installed on the remote server.
+
+### Prodigy on a remote server
+
+Installing Prodigy on server is almost identical to installing on a laptop. The
+main difference is that you won't be downloading it directly to the server, but
+instead downloading to your laptop and then uploading to the server.
+
+1. Download Prodigy onto your laptop using the company link. Make sure you
+   download the Linux version.
+2. `cd` into your Downloads directory or the location where you downloaded
+   Prodigy.
+3. Copy the Prodigy `.whl` to the server by running the following command, with
+   the appropriate username and paths replaced:
+   `scp -i /path/to/key.pem prodigy-1.5.1-cp35.cp36-cp35m.cp36m-linux_10_13_x86_64.whl
+   user@131.??.???.???:/home/user`
+4. Log into the remote server as above.
+5. `cd` into the home directory (or other location where you copied the wheel
+   file) and run `pip install prodigy-1.*.whl` to install.
