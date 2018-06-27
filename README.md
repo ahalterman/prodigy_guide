@@ -16,3 +16,7 @@ A simple binary classification of text setup, with no model in the loop
 ## 2_Wiki
 
 Loading an iframe of Wikipedia for binary classification
+
+## 3_Server
+
+Run Prodigy on EC2 and back up to Dropbox

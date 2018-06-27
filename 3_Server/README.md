@@ -74,3 +74,24 @@ instead downloading to your laptop and then uploading to the server.
 4. Log into the remote server as above.
 5. `cd` into the home directory (or other location where you copied the wheel
    file) and run `pip install prodigy-1.*.whl` to install.
+
+### Upload to Dropbox
+
+Prodigy's annotation will persist across server restarts, but it's wise to have
+them backed up somewhere else, like Dropbox.  Uploading Prodigy annotations to
+Dropbox can be done though a Dropbox "app". To set up an app, follow these
+steps:
+
+1. Go to https://www.dropbox.com/developers/apps/ and click "Create app"
+2. Select "Dropbox API", give it permissions to "App folder", name it, and
+   assign it to your personal or work drobox.
+3. In the app overview page, find the "OAuth 2" section and click the "Generate
+   access token" link.
+4. Copy that link into the approriate place in `backup_to_dropbox.sh`.
+5. Replace everything within "<...>", including the "<" and ">" with their
+   approprate contents (name of Prodigy dataset, name of Dropbox folder, OAuth
+   key).
+6. Run the script with `bash backup_to_dropbox.sh`.
+
+The `backup_to_dropbox.sh` script can then be run manually or with cron.
+
